@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-node-server-deployment
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: my-node-server
+  template:
+    metadata:
+      labels:
+        app: my-node-server
+    spec:
+      containers:
+      - name: my-node-server
+        image: <aws-account>.dkr.ecr.ap-southeast-2.amazonaws.com/ecr-repository:latest  # Replace with your ECR image URI
+        ports:
+        - containerPort: 1337
